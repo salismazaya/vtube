@@ -11,11 +11,13 @@ const cubism2Model = "RAM/RAM.model3.json";
     app.stage.addChild(model);
 
     model.scale.set(0.25);
-    model.x = -100
+    model.x = -200
     model.y = 20
     let interval;
 
     channel.bind('play', function (data) {
+        const message = JSON.parse(data)
+        document.querySelector('#sekeren').innerHTML = message.message
         let open = true;
         interval = setInterval(() => {
             model.internalModel.coreModel.setParameterValueById('ParamMouthOpenY', open ? 1 : 0)
