@@ -16,7 +16,7 @@ const cubism2Model = "RAM/RAM.model3.json";
     let interval;
 
     channel.bind('play', function (data) {
-        const message = JSON.parse(data)
+        const message = data
         document.querySelector('#sekeren').innerHTML = message.message
         let open = true;
         interval = setInterval(() => {
