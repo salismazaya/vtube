@@ -13,20 +13,18 @@ const cubism2Model = "RAM/RAM.model3.json";
     model.scale.set(0.25);
     model.x = -200
     model.y = 20
-    let interval;
 
-    channel.bind('play', function (data) {
+    channel.bind('play', async function (data) {
         const message = data
         document.querySelector('#sekeren').innerHTML = message.message
         let open = true;
-        interval = setInterval(() => {
+        const interval = setInterval(() => {
             model.internalModel.coreModel.setParameterValueById('ParamMouthOpenY', open ? 1 : 0)
             open = !open
         }, 200)
+        setTimeout(() => {
+            clearInterval(this)
+        }, message.duration * 1000)
     });
-
-    channel.bind('stop', (data) => {
-        clearInterval(interval)
-    })
 
 })();
