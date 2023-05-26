@@ -23,7 +23,7 @@ const cubism2Model = "RAM/RAM.model3.json";
             open = !open
         }, 200)
         setTimeout(() => {
-            clearInterval(this)
+            clearInterval(interval)
         }, message.duration * 1000)
     });
 
